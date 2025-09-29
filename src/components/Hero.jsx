@@ -5,8 +5,6 @@ import Buttons from "./Buttons";
 export default function Hero() {
   return (
     <main className="relative flex flex-col items-center text-center px-4 mt-30 sm:mt-20">
-      {/* Obrazek w tle */}
-      
       <section className="flex flex-col items-center justify-center min-h-[70vh] sm:min-h-[80vh] pb-8 sm:pb-12">
         <h1 className="
           text-4xl sm:text-5xl md:text-6xl lg:text-7xl

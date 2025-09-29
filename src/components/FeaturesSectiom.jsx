@@ -4,7 +4,7 @@ import { Gift, Layout, Diamond, Grid } from "lucide-react";
 export default function FeaturesSection() {
   return (
     <section className="w-full mt-20">
-      {/* Hero */}
+
       <div className=" relative overflow-hidden">
         <div className="max-w-9xl  mx-auto px-6 py-20 text-center">
           <img
