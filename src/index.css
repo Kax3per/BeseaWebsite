@@ -1,11 +1,9 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 body {
   @apply transition-colors duration-500;
+  margin: 0;
 }
 
 body.dark {
@@ -14,4 +12,10 @@ body.dark {
 
 body.light {
   @apply bg-gray-100 text-black;
+}
+
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  override-colors: black;
 }

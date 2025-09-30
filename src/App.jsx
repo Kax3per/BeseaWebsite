@@ -3,7 +3,11 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
 import FeaturesSection from "./components/FeaturesSectiom";
-import './App.css'
+import PiercingCard from "./components/PircingCard";
+import OurTeam from "./components/OurTeam";
+import ContactForm from "./components/ContactForm";
+import MinimalFooter from "./components/Footer";
+import './index.css'
 
 export default function App() {
   const [isFeaturesVisible, setIsFeaturesVisible] = useState(false);
@@ -30,6 +34,10 @@ export default function App() {
         <FeaturesSection />
       </div>
       <Features />
+      <PiercingCard/>
+      <OurTeam/>
+      <ContactForm/>
+      <MinimalFooter/>
     </div>
   );
 }

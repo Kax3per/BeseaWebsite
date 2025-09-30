@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Menu, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import logoBesea from "../assets/logoBesea.png";
 
 export default function Navbar() {
   const [theme, setTheme] = useState("dark");
-
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     document.body.classList.add("dark");
@@ -22,49 +22,64 @@ export default function Navbar() {
   }, [theme]);
 
   return (
-    <header className="fixed mb-20 top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-6xl z-50">
-      <div className="flex items-center justify-between  backdrop-blur-3xl border border-green-400/30 rounded-full px-8 py-4 shadow-lg shadow-green-500/20 transition-colors">
-        
-   
+<header className="fixed top-6 left-1/2  -translate-x-1/2 w-[90%] max-w-6xl z-50">
+      <div className="mx-auto w-[90%] max-w-6xl flex items-center justify-between 
+                  backdrop-blur-xl border border-green-400/30 rounded-4xl 
+                  px-6 py-4 shadow-lg shadow-green-500/20 transition-colors">
+        {/* Logo */}
         <div className="flex items-center space-x-2">
-          <img 
-            src={logoBesea} 
-            alt="Besea Logo" 
-            className="h-10 w-auto"
-          />
+          <img src={logoBesea} alt="Besea Logo" className="h-10 w-auto" />
         </div>
 
-        <nav className="hidden md:flex space-x-8 font-semibold text-lg">
-          <a href="#" className="transition">Docs</a>
-          <a href="#" className=" transition">Components</a>
-          <a href="#" className=" transition">Blog</a>
-          <a href="#" className="  transition">Showcase</a>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex space-x-8 font-medium text-lg">
+          <a href="#" className="hover:text-green-400 transition">Docs</a>
+          <a href="#" className="hover:text-green-400 transition">Components</a>
+          <a href="#" className="hover:text-green-400 transition">Blog</a>
+          <a href="#" className="hover:text-green-400 transition">Showcase</a>
         </nav>
 
-    
+        {/* Controls */}
         <div className="flex items-center space-x-4">
-  
+          {/* Theme toggle */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="p-2 rounded-full hover:bg-white/10 transition"
           >
             {theme === "dark" ? (
-              <Sun className="w-6 h-6 " />   
+              <Sun className="w-6 h-6" />
             ) : (
-              <Moon className="w-6 h-6 " />  
+              <Moon className="w-6 h-6" />
             )}
           </button>
 
-
-          <button className="hidden  md:block bg-green-500 text-white dark:text-white light:text-black px-4 py-2 rounded-full text-base font-medium hover:bg-green-600 transition shadow-md shadow-green-500/30">
+          {/* Desktop CTA */}
+          <button className="hidden md:block bg-green-500 text-white px-5 py-2 rounded-full text-base font-medium hover:bg-green-600 transition shadow-md shadow-green-500/30">
             Sign in
           </button>
 
-          <button className="md:hidden p-2 rounded-full hover:bg-white/10 transition">
-            <Menu className="w-6 h-6 " />
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 rounded-full hover:bg-white/10 transition"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
+
+      {/* Mobile nav */}
+      {isOpen && (
+        <div className="md:hidden mt-3 rounded-2xl border border-green-400/30 backdrop-blur-xl p-6 space-y-6 shadow-lg shadow-green-500/20 animate-fade-in">
+          <a href="#" className="block text-lg font-medium hover:text-green-400 transition">Docs</a>
+          <a href="#" className="block text-lg font-medium hover:text-green-400 transition">Components</a>
+          <a href="#" className="block text-lg font-medium hover:text-green-400 transition">Blog</a>
+          <a href="#" className="block text-lg font-medium hover:text-green-400 transition">Showcase</a>
+          <button className="w-full bg-green-500 text-white px-5 py-2 rounded-full text-base font-medium hover:bg-green-600 transition shadow-md shadow-green-500/30">
+            Sign in
+          </button>
+        </div>
+      )}
     </header>
   );
 }
